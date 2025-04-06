@@ -1,22 +1,21 @@
-from typing import Any, AsyncGenerator
+from typing import Any, Generator
 
-from dishka import Provider, Scope, make_async_container
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import sessionmaker
+from dishka import Provider, Scope
+from sqlalchemy.orm import Session, sessionmaker
 
 from app.core.config import AppConfig
 
 from . import constructors as app_depends
 
 
-async def provide_db_session(maker: sessionmaker[Any]) -> AsyncGenerator[AsyncSession, None]:
+def provide_db_session(maker: sessionmaker[Any]) -> Generator[Session, None, None]:
     generator = app_depends.db_session_autocommit(maker)
-    session = await anext(generator)
+    session = next(generator)
 
     yield session
 
     try:
-        await anext(generator)
+        next(generator)
     except StopAsyncIteration:
         pass
     else:
@@ -30,4 +29,4 @@ def db_session_maker(config: AppConfig) -> sessionmaker[Any]:
 provider = Provider()
 provider.provide(AppConfig.from_env, scope=Scope.APP, provides=AppConfig)
 provider.provide(db_session_maker, scope=Scope.APP, provides=sessionmaker[Any])
-provider.provide(provide_db_session, scope=Scope.REQUEST, provides=AsyncSession)
+provider.provide(provide_db_session, scope=Scope.REQUEST, provides=Session)
