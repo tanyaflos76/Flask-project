@@ -19,12 +19,3 @@ flint: format lint
 .PHONY: migration
 migration:
 	alembic revision --autogenerate
-
-.PHONY: dev-compose
-dev-compose:
-	docker compose -p flask-project -f deployment/docker-compose.local.yml up -d --build --remove-orphans
-
-.PHONY: dev-destroy
-dev-destroy:
-	docker compose -p flask-project -f deployment/docker-compose.local.yml down -v --remove-orphans
-
