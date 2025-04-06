@@ -16,7 +16,7 @@ def provide_db_session(maker: sessionmaker[Any]) -> Generator[Session, None, Non
 
     try:
         next(generator)
-    except StopAsyncIteration:
+    except StopIteration:
         pass
     else:
         raise RuntimeError("Database session not closed (db dependency generator is not closed).")
