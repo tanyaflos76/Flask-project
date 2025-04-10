@@ -2,7 +2,10 @@ from flask import Flask, render_template, redirect
 from data import db_session
 from data.users import User
 from forms.user import RegisterForm, LoginForm
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, current_user
+
+from forms.wishlists import CreatingListForm
+from data.wish_lists import Wish_list
 
 application = Flask(__name__)
 
@@ -61,9 +64,28 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
-@application.route('/profile')
+@application.route('/profile', methods=['GET', 'POST'])
 def profile():
-    return render_template("profile.html")
+    db_sess = db_session.create_session()
+    wishlists = db_sess.query(Wish_list).filter(Wish_list.is_public == True)
+    return render_template("profile.html", wishlists=wishlists)
+
+
+@application.route('/create-wishlist', methods=['GET', 'POST'])
+def create_wishlist():
+    form = CreatingListForm()
+    if form.validate_on_submit():
+        db_sess = db_session.create_session()
+        wishlists = Wish_list()
+        wishlists.title = form.title.data
+        wishlists.description = form.description.data
+        wishlists.is_public = form.is_public.data
+        current_user.wish_lists.append(wishlists)
+        db_sess.merge(current_user)
+        db_sess.commit()
+        return redirect('/profile')
+    return render_template('create_wishlist.html', title='Добавление wish-листа',
+                           form=form)
 
 
 def main():

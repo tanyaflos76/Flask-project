@@ -43,9 +43,30 @@
     justify-content: space-between;
 }
 
+.wishlists{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
 .cards-row{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
 }
+
+.wishlists {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.cards-row {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
 
