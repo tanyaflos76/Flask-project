@@ -61,6 +61,11 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
+@application.route('/profile')
+def profile():
+    return render_template("profile.html")
+
+
 def main():
     db_session.global_init("db/wishare.db")
     application.run()

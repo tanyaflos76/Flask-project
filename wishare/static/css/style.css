@@ -19,44 +19,76 @@
 .header{
     width:100%;
     color: black;
-    font-family:  Bellota;
+    font-family: Bellota;
     padding: 20px;
     background: rgb(231, 229, 229);
 	box-sizing: border-box;
 }
-
-.text-profile{
-    color:black;
-    font-size:40px;
-    margin-top:20px;
-}
-
 .logo-img{
     width: 100px;
     height: 100px;
-    margin-left:40px;
-    
+    margin-left:40px
 }
+
+.user-section{
+    height: 350px;
+    border: 3px solid black;
+    margin-left:50px;
+    margin-right:50px;
+    margin-top:70px;
+    margin-bottom: 70px;
+    padding-left:100px;
+    padding-right: 500px;
+    padding-top:50px;
+    padding-bottom: 50px;
+}
+
+.wishlists-heading{
+    margin-bottom: 30px;
+    margin-left:30px;
+    margin-right: 300px;
+}
+
+.wishlists{
+    margin-bottom: 50px;
+}
+
+.avatar{
+    border: 3px solid black;
+    width: 250px;
+    height: 250px;
+}
+
 .logo-title{
     font-size: 70px;
     font-family: Allan;
 }
 
+.text-profile{
+    font-size:40px;
+    color:black;
+    margin-top:20px;
+}
+
+.text-profile:hover{
+    color:gray;
+}
+
 .btn.btn-primary {
-    background-color: #000; 
-    border-color: #000;     
-    color: #fff;    
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
     padding: 10px 70px;
     margin-top: 22px;
     border-radius: 10px;
-    font-size: 20px;      
-  }
-  
+    font-size: 20px;
+}
+
 .btn.btn-primary:hover {
-    background-color: #333; 
+    background-color: #333;
     border-color: #333;
     color: #fff;
-  }
+}
 
 .front-button{
     margin-top: 70px;
@@ -70,6 +102,15 @@
     padding-bottom: 200px;
 }
 
+h1.register{
+    margin-left: 30px;
+}
+
+.front-text{
+    font-size: 70px;
+    font-family: Bellota;
+}
+
 .form-register{
     margin: auto;
     margin-top:100px;
@@ -80,11 +121,10 @@
     height: 650px;
     padding-top:60px;
     background-color: white;
-
     border: 3px solid black;
 }
 
-.form-authorize{
+.form-autorize{
     margin: auto;
     margin-top:100px;
     margin-bottom: 100px;
@@ -94,17 +134,8 @@
     height: 500px;
     padding-top:60px;
     background-color: white;
-
     border: 3px solid black;
 }
-
-
-.front-text{
-    font-size: 70px;
-    font-family: Bellota;
-
-}
-
 
 .footer{
     background: rgb(231, 229, 229);

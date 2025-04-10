@@ -31,9 +31,21 @@
     justify-content: flex-end;
 }
 
-/*CARDS*/
+.user-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.wishlists-heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .cards-row{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
 }
+
