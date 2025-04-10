@@ -12,7 +12,9 @@
     padding: 0;
 }
 
-
+.register{
+    margin-left: 30px;
+}
 
 .header{
     width:100%;
@@ -32,22 +34,6 @@
     font-size: 70px;
     font-family: Allan;
 }
-.menu-item{
-    list-style: none;
-}
-
-.menu-link{
-    color: white;
-    text-decoration: none;
-}
-
-/* Дополнительно */
-
-.menu-link{
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
 
 .btn.btn-primary {
     background-color: #000; 
@@ -75,19 +61,27 @@
     padding-top:100px;
     padding-right:70px;
     padding-bottom: 200px;
-
 }
 
+.form-register{
+    margin: auto;
+    margin-top:100px;
+    margin-bottom: 100px;
+    width: 600px;;
+    padding-left:30px;
+    padding-right:30px;
+    height: 650px;
+    padding-top:60px;
+    background-color: white;
+
+    border: 3px solid black;
+}
 
 
 .front-text{
     font-size: 70px;
     font-family: Bellota;
 
-}
-
-.main{
-    background-color: rgb(231, 229, 229);
 }
 
 
