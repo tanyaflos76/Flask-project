@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, render_template
-from flask_login import login_user
+from flask_login import current_user, login_user
 
 from app.core.dependencies.flask import DatabaseDependency
 from app.lib.forms import LoginForm, RegisterForm
@@ -52,5 +52,5 @@ def login(db: DatabaseDependency):
 
 @router.route("/profile", methods=["GET", "POST"])
 def profile(db: DatabaseDependency):
-    wishlists = db.query(WishListModel).filter(WishListModel.is_public == True)
+    wishlists = db.query(WishListModel).filter(WishListModel.user_id == current_user.id)
     return render_template("profile.html", wishlists=wishlists)

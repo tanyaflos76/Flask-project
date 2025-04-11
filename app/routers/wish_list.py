@@ -13,12 +13,12 @@ router = Blueprint("wish_list", __name__)
 def create_wishlist(db: DatabaseDependency):
     form = CreatingListForm()
     if form.validate_on_submit():
-        wishlists = WishListModel()
-        wishlists.title = form.title.data
-        wishlists.description = form.description.data
-        wishlists.is_public = form.is_public.data
-        current_user.wish_lists.append(wishlists)
-        db.merge(current_user)
-        db.commit()
+        wishlist = WishListModel()
+        wishlist.user_id = current_user.id
+        wishlist.title = form.title.data
+        wishlist.description = form.description.data
+        wishlist.is_public = form.is_public.data
+        db.add(wishlist)
+        db.flush()
         return redirect("/profile")
     return render_template("create_wishlist.html", title="Добавление wish-листа", form=form)
