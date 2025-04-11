@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 from dishka import make_container
