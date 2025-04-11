@@ -1,19 +1,19 @@
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, SubmitField, EmailField
+from wtforms import EmailField, PasswordField, StringField, SubmitField
 from wtforms.fields.simple import BooleanField
 from wtforms.validators import DataRequired
 
 
 class RegisterForm(FlaskForm):
-    email = EmailField('Почта', validators=[DataRequired()])
-    password = PasswordField('Пароль', validators=[DataRequired()])
-    password_again = PasswordField('Повторите пароль', validators=[DataRequired()])
-    name = StringField('Имя пользователя', validators=[DataRequired()])
-    submit = SubmitField('Зарегестрироваться')
+    email = EmailField("Почта", validators=[DataRequired()])
+    password = PasswordField("Пароль", validators=[DataRequired()])
+    password_again = PasswordField("Повторите пароль", validators=[DataRequired()])
+    name = StringField("Имя пользователя", validators=[DataRequired()])
+    submit = SubmitField("Зарегистрироваться")
 
 
 class LoginForm(FlaskForm):
-    email = EmailField('Почта', validators=[DataRequired()])
-    password = PasswordField('Пароль', validators=[DataRequired()])
-    remember_me = BooleanField('Запомнить меня')
-    submit = SubmitField('Войти')
+    email = EmailField("Почта", validators=[DataRequired()])
+    password = PasswordField("Пароль", validators=[DataRequired()])
+    remember_me = BooleanField("Запомнить меня")
+    submit = SubmitField("Войти")

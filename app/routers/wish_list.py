@@ -9,7 +9,7 @@ from app.lib.models import WishListModel
 router = Blueprint("wish_list", __name__)
 
 
-@router.route("/create", methods=["GET", "POST"])
+@router.route("/create-wishlist", methods=["GET", "POST"])
 def create_wishlist(db: DatabaseDependency):
     form = CreatingListForm()
     if form.validate_on_submit():

@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, render_template
-from flask_login import LoginManager, login_user
+from flask_login import login_user
 
 from app.core.dependencies.flask import DatabaseDependency
 from app.lib.forms import LoginForm, RegisterForm
@@ -7,19 +7,25 @@ from app.lib.models import UserModel, WishListModel
 
 
 router = Blueprint("user", __name__)
-login_manager = LoginManager()
 
 
-# login_manager.init_app(application)
 @router.route("/register", methods=["GET", "POST"])
 def reqister(db: DatabaseDependency):
     form = RegisterForm()
     if form.validate_on_submit():
         if form.password.data != form.password_again.data:
-            return render_template("register.html", title="Регистрация", form=form, message="Пароли не совпадают")
+            return render_template(
+                "register.html",
+                title="Регистрация",
+                form=form,
+                message="Пароли не совпадают",
+            )
         if db.query(UserModel).filter(UserModel.email == form.email.data).first():
             return render_template(
-                "register.html", title="Регистрация", form=form, message="Такой пользователь уже есть"
+                "register.html",
+                title="Регистрация",
+                form=form,
+                message="Такой пользователь уже есть",
             )
         user = UserModel(
             username=form.name.data,
@@ -30,11 +36,6 @@ def reqister(db: DatabaseDependency):
         db.commit()
         return redirect("/login")
     return render_template("register.html", title="Регистрация", form=form)
-
-
-@login_manager.user_loader
-def load_user(db: DatabaseDependency, user_id: int):
-    return db.query(UserModel).get(user_id)
 
 
 @router.route("/login", methods=["GET", "POST"])

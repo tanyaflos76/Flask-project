@@ -25,7 +25,7 @@ class UserModel(AbstractModel, UserMixin):
         nullable=False,
         index=True,
     )
-    wish_lists: Mapped[list["WishListModel"]] = relationship("Wish_list", back_populates="user")
+    wish_lists: Mapped[list["WishListModel"]] = relationship("WishListModel", back_populates="user")
 
     def set_password(self, password):
         self.hashed_password = generate_password_hash(password)
