@@ -1,14 +1,13 @@
-from flask import Blueprint, render_template
+from flask import Blueprint
+
+from .user import router as user_router
+from .wish_list import router as wish_list_router
 
 
 router = Blueprint("router", __name__)
 
-
-@router.route("/")
-def read_root():
-    return render_template("index.html", name="World")
-
-
-@router.route("/<name>")
-def read_item(name: str):
-    return render_template("index.html", name=name)
+for i in [
+    user_router,
+    wish_list_router,
+]:
+    router.register_blueprint(i)
