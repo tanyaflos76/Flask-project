@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class=front-text-container>
+    <div class='front-text'>Привет, это Wishare - твой помощник в создании wish-листов!</div>
+    <div class='front-button'></div>
+
+    {% if current_user.is_authenticated %}
+    <a style="height: 100px; padding-top:23px; font-size:28px" class="btn btn-primary" href='/profile' role="button">Создать
+        wish-лист</a>
+    {% else %}
+    <a style="height: 100px; padding-top:23px; font-size:28px" class="btn btn-primary" href='/register' role="button">Создать
+        wish-лист</a>
+    {% endif %}
+
+
+</div>
+</div>
+
+{% endblock %}

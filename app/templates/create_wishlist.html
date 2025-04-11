@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='form-create-list'>
+    <p style="font-size: 30px; text-align: center;">Создай новый wish-лист!)</p>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.title.label }}:
+            {{ form.title(class="form-control") }}
+            {% for error in form.title.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.description.label }}:
+            {{ form.description(class="form-control") }}
+            {% for error in form.description.errors %}
+            <p content="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+            {% endfor %}
+        </div>
+
+
+        <p>{{ form.is_public() }} {{ form.is_public.label }}</p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        {{message}}
+
+    </form>
+</div>
+{% endblock %}
