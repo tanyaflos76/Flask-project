@@ -1,0 +1,21 @@
+services:
+  app:
+    image: &app_image ghcr.io/tanyflos76/Flask-project:latest
+
+    restart: unless-stopped
+
+    env_file: &app_env_file
+      - .env
+
+    environment: &app_environment
+      MODE: app
+
+    healthcheck: &healthcheck
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 2s
+      start_interval: 1s
+
+    ports:
+      - 8000:8000
