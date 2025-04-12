@@ -1,72 +1,69 @@
 /* HEADER */
-.menu{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-.header-row{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.header-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.container-header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.container-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
-.header-logo{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-grow: 1;
-}
-
-.logo-img{
-    margin-right: 40px;
+.header-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
 }
 
-.header-menu{
-    display: flex;
-    justify-content: flex-end;
+.logo-img {
+  margin-right: 40px;
 }
 
-.user-section{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.header-menu {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.wishlists-heading{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.user-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.wishlists{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
-.cards-row{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+.wishlists-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .wishlists {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 .cards-row {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
+.wishlists {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-bottom: 20px;
+}
 
-
+.cards-row {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
