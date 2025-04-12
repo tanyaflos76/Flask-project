@@ -8,11 +8,12 @@ from app.lib.models.wish_list import WishListModel
 
 
 def create_wish_list(db: Session, form: CreatingListForm, user_id: int):
-    wishlist = WishListModel()
-    wishlist.user_id = user_id
-    wishlist.title = form.title.data
-    wishlist.description = form.description.data
-    wishlist.is_public = form.is_public.data
+    wishlist = WishListModel(
+        user_id=user_id,
+        title=form.title.data,
+        description=form.description.data,
+        is_public=form.is_public.data,
+    )
     db.add(wishlist)
     db.flush()
 
