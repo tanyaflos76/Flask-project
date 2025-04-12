@@ -27,5 +27,10 @@ class DatabaseConfig(BaseSettings):
     url: str
 
 
+class SecurityConfig(BaseSettings):
+    token: str
+
+
 class AppConfig(BaseConfig):
     database: DatabaseConfig
+    security: SecurityConfig
