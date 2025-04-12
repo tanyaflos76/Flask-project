@@ -4,11 +4,11 @@ from app.lib.forms.user import RegisterForm
 from app.lib.models.user import UserModel
 
 
-def get_user_by_email(db: Session, email: str | None):
+def get_user_by_email(db: Session, email: str | None) -> UserModel | None:
     return db.query(UserModel).filter(UserModel.email == email).first()
 
 
-def create_user(db: Session, form: RegisterForm):
+def create_user(db: Session, form: RegisterForm) -> None:
     user = UserModel(
         username=form.name.data,
         email=form.email.data,

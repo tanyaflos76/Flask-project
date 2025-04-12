@@ -7,7 +7,7 @@ from app.lib.forms.wishlists import CreatingListForm
 from app.lib.models.wish_list import WishListModel
 
 
-def create_wish_list(db: Session, form: CreatingListForm, user_id: int):
+def create_wish_list(db: Session, form: CreatingListForm, user_id: int) -> None:
     wishlist = WishListModel(
         user_id=user_id,
         title=form.title.data,

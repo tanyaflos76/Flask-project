@@ -34,13 +34,14 @@ def reqister(db: DatabaseDependency):
 @router.route("/login", methods=["GET", "POST"])
 def login(db: DatabaseDependency):
     form = LoginForm()
+    kwargs = {"title": "Авторизация", "form": form}
     if form.validate_on_submit():
         user = user_db.get_user_by_email(db, form.email.data)
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             return redirect("/")
-        return render_template("login.html", message="Неправильный логин или пароль", form=form)
-    return render_template("login.html", title="Авторизация", form=form)
+        return render_template("login.html", **kwargs, message="Неправильный логин или пароль")
+    return render_template("login.html", **kwargs)
 
 
 @router.route("/profile", methods=["GET", "POST"])
