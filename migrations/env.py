@@ -1,6 +1,5 @@
 """Migration env."""
 
-import asyncio
 import sys
 from logging.config import fileConfig
 from os import environ
@@ -8,10 +7,9 @@ from os import environ
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 from sqlalchemy.engine import Connection
-from sqlalchemy.ext.asyncio import AsyncEngine
 
-from app.lib.models import *  # noqa
-from app.lib.models.abc import AbstractModel
+from wishare.lib.models import *  # noqa
+from wishare.lib.models.abc import AbstractModel
 
 
 # this is the Alembic Config object, which provides
