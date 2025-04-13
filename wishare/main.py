@@ -1,4 +1,4 @@
-from app.app import app
+from wishare.app import app
 
 
 app = app()

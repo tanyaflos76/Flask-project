@@ -3,8 +3,8 @@ from typing import Sequence
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.lib.forms.wishlists import CreatingListForm
-from app.lib.models.wish_list import WishListModel
+from wishare.lib.forms.wishlists import CreatingListForm
+from wishare.lib.models.wish_list import WishListModel
 
 
 def create_wish_list(db: Session, form: CreatingListForm, user_id: int) -> None:

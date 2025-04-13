@@ -1,9 +1,9 @@
 from flask import Blueprint, redirect, render_template
 from flask_login import current_user
 
-from app.core.dependencies.flask import DatabaseDependency
-from app.lib.db import wish_list as wish_list_db
-from app.lib.forms import CreatingListForm
+from wishare.core.dependencies.flask import DatabaseDependency
+from wishare.lib.db import wish_list as wish_list_db
+from wishare.lib.forms import CreatingListForm
 
 
 router = Blueprint("wish_list", __name__)

@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-from app.lib.forms.user import RegisterForm
-from app.lib.models.user import UserModel
+from wishare.lib.forms.user import RegisterForm
+from wishare.lib.models.user import UserModel
 
 
 def get_user_by_email(db: Session, email: str | None) -> UserModel | None:

@@ -7,10 +7,10 @@ from flask import Flask
 from flask_login import LoginManager
 from sqlalchemy.orm import Session
 
-from app.core.config import AppConfig
-from app.core.dependencies.flask import provider
-from app.lib.models.user import UserModel
-from app.routers.router import router
+from wishare.core.config import AppConfig
+from wishare.core.dependencies.flask import provider
+from wishare.lib.models.user import UserModel
+from wishare.routers.router import router
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,7 +35,7 @@ class App:
         self.container = make_container(provider, FlaskProvider())
 
         self.login_manager.user_loader(self.load_user)
-        self.login_manager.init_app(app)
+        self.login_manager.init_app(self.app)
 
         setup_dishka(container=self.container, app=self.app, auto_inject=True)
 

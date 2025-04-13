@@ -4,7 +4,7 @@ from dishka import Provider, Scope
 from dishka.integrations.flask import FromDishka
 from sqlalchemy.orm import Session, sessionmaker
 
-from app.core.config import AppConfig
+from wishare.core.config import AppConfig
 
 from . import constructors as app_depends
 

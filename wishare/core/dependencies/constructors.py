@@ -4,7 +4,7 @@ from sqlalchemy.engine import Engine, create_engine
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker
 
-from app.core.config import AppConfig
+from wishare.core.config import AppConfig
 
 
 def db_engine(database_url: str) -> Engine:
