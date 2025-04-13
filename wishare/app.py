@@ -14,7 +14,7 @@ from wishare.routers.router import router
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIR = BASE_DIR / "app" / "templates"
+TEMPLATE_DIR = BASE_DIR / "wishare" / "templates"
 
 
 class App:
