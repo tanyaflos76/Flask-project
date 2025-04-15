@@ -28,6 +28,3 @@ def get_wish_list_by_id(db: Session, list_id: int) -> WishListModel | None:
     query = select(WishListModel).where(WishListModel.id == list_id)
     result = db.execute(query).scalar()
     return result
-
-
-

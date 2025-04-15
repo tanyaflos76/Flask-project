@@ -1,9 +1,10 @@
 from flask import Blueprint, redirect, render_template
-from flask_login import current_user, login_user, login_required, logout_user
+from flask_login import current_user, login_required, login_user, logout_user
 
 from wishare.core.dependencies.flask import DatabaseDependency
 from wishare.lib.db import user as user_db, wish_list as wish_list_db
 from wishare.lib.forms import LoginForm, RegisterForm
+
 
 router = Blueprint("user", __name__)
 
@@ -49,7 +50,7 @@ def profile(db: DatabaseDependency):
     return render_template("profile.html", wishlists=wishlists)
 
 
-@router.route('/logout')
+@router.route("/logout")
 @login_required
 def logout():
     logout_user()
