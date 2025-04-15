@@ -88,6 +88,21 @@
   color: #fff;
 }
 
+.btn.btn-outline-primary{
+    border-color:black;
+    color:black;
+}
+.btn.btn-outline-primary:hover {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
+}
+.btn.btn-outline-primary:clicked {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
+}
+
 .front-button {
   margin-top: 70px;
 }
@@ -196,6 +211,35 @@ h1.register {
 }
 
 .wishlists{
-    margin-left:100px;
-    margin-right:100px;
+    margin-left:70px;
+    margin-right:70px;
 }
+
+.copy-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #323232;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 9999;
+}
+
+.copy-toast.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.copy-toast.hidden {
+    opacity: 0;
+}
+
+
+

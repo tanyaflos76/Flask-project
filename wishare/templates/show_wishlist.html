@@ -2,31 +2,134 @@
 
 {% block content %}
 
+{% if current_user.is_authenticated %}
+{% if wishlist.user_id == current_user.id%}
+
+<div id="copy-toast" class="copy-toast hidden">
+    ✅ Ссылка на wish-лист скопирована!
+</div>
+<script>
+    function copyToClipboard() {
+        const url = window.location.href;
+
+        navigator.clipboard.writeText(url)
+            .then(() => {
+                showCopyToast();
+            })
+            .catch(err => {
+                console.error("Ошибка при копировании:", err);
+            });
+    }
+
+    function showCopyToast() {
+        const toast = document.getElementById("copy-toast");
+        toast.classList.remove("hidden");
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+            toast.classList.add("hidden");
+        }, 3000);
+    }
+</script>
 <section class='wishlist'>
-    <div class='wishlist-section'>
+    <div class="wishlist-heading">
+        <div class='wishlist-section'>
 
-        <h1 style=" font-size: 50px; margin-right:40px; margin-top:25px;">{{ wishlist.title }}</h1>
-        <a style="height: 70px; width: 300px; padding-top:15px; font-size:23px; margin-bottom: 50px"
+            <h1 style=" font-size: 50px; margin-right:40px; margin-top:25px;">{{ wishlist.title }}</h1>
+            <a style="height: 70px; width: 300px; padding-top:15px; font-size:23px; margin-bottom: 50px"
                class="btn btn-primary" href='/create-wish/{{wishlist.id}}' role="button">Добавить wish</a>
-    </div>
 
+        </div>
+
+        <button class="btn btn-outline-primary" style="margin-left:200px; width:250px; text-align:center"
+                onclick="copyToClipboard()">
+            🔗 Поделиться wish-листом
+        </button>
+    </div>
     <div class='wishlists'>
-            {% for item in wishes%}
-            <div class='cards-row'>
-                <div class='card'>
-                    <div class='card-body'>
-                        <h3 class='card-title'>{{ item.name }}</h3>
-                        <div class='card-text'>{{ item.description }}</div>
-                        <div class="card-price">{{ item.price|round(0) }} рублей </div>
-                        <div class='card-button'>
-                            <a class='card-link' href="{{ item.link }}">Купить</a>
-                        </div>
+        {% for item in wishes%}
+        <div class='cards-row'>
+            <div class='card'>
+                <div class='card-body'>
+                    <h3 class='card-title'>{{ item.name }}</h3>
+                    <div class='card-text'>{{ item.description }}</div>
+                    <div class="card-price"> {{ item.price|round(0) }} рублей</div>
+                    <div class='card-button'>
+                        <a class='card-link' href="{{ item.link }}">Купить</a>
                     </div>
                 </div>
             </div>
-            {% endfor %}
+        </div>
+        {% endfor %}
 
     </div>
 </section>
+{% endif %}
+
+
+<div id="copy-toast-2" class="copy-toast hidden">
+    Выбери, что планируешь подарить!)
+</div>
+<script>
+    function copyToClipboard() {
+        const url = window.location.href;
+
+        navigator.clipboard.writeText(url)
+            .then(() => {
+                showCopyToast();
+            })
+            .catch(err => {
+                console.error("Ошибка при копировании:", err);
+            });
+    }
+
+    function showCopyToast() {
+        const toast = document.getElementById("copy-toast-2");
+        toast.classList.remove("hidden");
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+            toast.classList.add("hidden");
+        }, 3000);
+    }
+</script>
+
+<section class='wishlist'>
+    <div class="wishlist-heading">
+        <div class='wishlist-section'>
+            <h1 style=" font-size: 50px; margin-right:40px; margin-top:25px;">{{ wishlist.title }}</h1>
+        </div>
+        <button class="btn btn-outline-primary" style="margin-left:200px; margin-top:25px; width:250px; text-align:center"
+                onclick="copyToClipboard()">
+            Хочу что-нибудь подарить
+        </button>
+
+    </div>
+    <div class='wishlists'>
+        {% for item in wishes%}
+        <div class='cards-row'>
+            <div class='card'>
+                <div class='card-body'>
+                    <div class="reservation">
+                        <h3 class='card-title'>{{ item.name }}</h3>
+                            <div class="reserve-button">
+                                <input class="form-check-input" type="checkbox" value="" id="{{}}">
+                            </div>
+                    </div>
+                    <div class='card-text'>{{ item.description }}</div>
+                    <div class="card-price">{{ item.price|round(0) }} рублей</div>
+                    <div class='card-button'>
+                        <a class='card-link' href="{{ item.link }}">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+{% endif %}
 
 {% endblock %}

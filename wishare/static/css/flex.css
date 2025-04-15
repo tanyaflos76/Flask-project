@@ -66,3 +66,19 @@
     display:flex;
     flex-direction:row;
 }
+
+.wishlist-heading{
+    display:flex;
+    flex-direction:column;
+}
+
+.reservation{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+
+.reserve-button{
+    display:flex;
+    flex-direction:column;
+}

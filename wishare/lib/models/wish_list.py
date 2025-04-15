@@ -5,7 +5,7 @@ from sqlalchemy import DateTime, ForeignKey, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .abc import AbstractModel
-
+from .reservation import ReservationModel
 
 if TYPE_CHECKING:
     from .user import UserModel

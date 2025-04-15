@@ -7,7 +7,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from .abc import AbstractModel
-
+from .reservation import ReservationModel
 
 if TYPE_CHECKING:
     from .wish_list import WishListModel
@@ -26,6 +26,7 @@ class UserModel(AbstractModel, UserMixin):
         index=True,
     )
     wish_lists: Mapped[list["WishListModel"]] = relationship("WishListModel", back_populates="user")
+    reservations: Mapped[list["ReservationModel"]] = relationship("ReservationModel", back_populates="user")
 
     def set_password(self, password):
         self.hashed_password = generate_password_hash(password)

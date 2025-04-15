@@ -5,7 +5,7 @@ from sqlalchemy import DateTime, ForeignKey, Numeric, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .abc import AbstractModel
-
+from .reservation import ReservationModel
 
 if TYPE_CHECKING:
     from . import WishListModel
@@ -27,3 +27,4 @@ class WishModel(AbstractModel):
         index=True,
     )
     wish_lists: Mapped["WishListModel"] = relationship("WishListModel", back_populates="wishes")
+    reservations: Mapped[list["ReservationModel"]] = relationship("ReservationModel", back_populates="wishes")
