@@ -31,7 +31,7 @@
                         <h3 class='card-title'>{{ item.title }}</h3>
                         <div class='card-text'>{{ item.description }}</div>
                         <div class='card-button'>
-                            <a class='card-link' href='#'>Открыть wish-лист</a>
+                            <a class='card-link' href="/wishlist/{{ item.id }}">Открыть wish-лист</a>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,6 @@
 
 
     </div>
-    </a>
 </section>
 
 {% endblock %}

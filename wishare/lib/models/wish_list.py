@@ -9,6 +9,7 @@ from .abc import AbstractModel
 
 if TYPE_CHECKING:
     from .user import UserModel
+    from . import WishModel
 
 
 class WishListModel(AbstractModel):
@@ -26,3 +27,5 @@ class WishListModel(AbstractModel):
         index=True,
     )
     user: Mapped["UserModel"] = relationship("UserModel", back_populates="wish_lists")
+    wishes: Mapped[list["WishModel"]] = relationship("WishModel", back_populates="wish_lists")
+

@@ -22,3 +22,12 @@ def get_wish_lists(db: Session, user_id: int) -> Sequence[WishListModel]:
     query = select(WishListModel).where(WishListModel.user_id == user_id)
     wishlists = (db.execute(query)).scalars().all()
     return wishlists
+
+
+def get_wish_list_by_id(db: Session, list_id: int) -> WishListModel | None:
+    query = select(WishListModel).where(WishListModel.id == list_id)
+    result = db.execute(query).scalar()
+    return result
+
+
+
