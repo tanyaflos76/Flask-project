@@ -23,3 +23,7 @@ def get_wishes(db: Session, list_id: int) -> Sequence[WishModel]:
     query = select(WishModel).where(WishModel.wish_list_id == list_id)
     wishes = db.execute(query).scalars().all()
     return wishes
+
+def get_wish_by_wish_id(db: Session, wish_id: int) -> WishModel | None:
+    wish = db.query(WishModel).filter(WishModel.id == wish_id).first()
+    return wish

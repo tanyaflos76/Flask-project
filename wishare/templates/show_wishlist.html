@@ -65,26 +65,26 @@
 
     </div>
 </section>
-{% endif %}
 
+{% else %}
 
 <div id="copy-toast-2" class="copy-toast hidden">
     Выбери, что планируешь подарить!)
 </div>
 <script>
-    function copyToClipboard() {
+    function copyToClipboard_2() {
         const url = window.location.href;
 
         navigator.clipboard.writeText(url)
             .then(() => {
-                showCopyToast();
+                showCopyToast_2();
             })
             .catch(err => {
                 console.error("Ошибка при копировании:", err);
             });
     }
 
-    function showCopyToast() {
+    function showCopyToast_2() {
         const toast = document.getElementById("copy-toast-2");
         toast.classList.remove("hidden");
         toast.classList.add("show");
@@ -94,7 +94,33 @@
             toast.classList.add("hidden");
         }, 3000);
     }
+
+    function saveReserved() {
+    const selected = [];
+    document.querySelectorAll('.wish-checkbox:checked').forEach(cb => {
+        selected.push(cb.value);
+    });
+
+    fetch('/reserve_multiple', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ wishes: selected })
+    })
+    .then(response => {
+        if (response.redirected) {
+            window.location.href = response.url;
+        } else {
+            console.log("Не было редиректа, ответ:", response);
+        }
+    })
+    .catch(error => {
+        console.error("Ошибка при сохранении:", error);
+    });
+}
 </script>
+
 
 <section class='wishlist'>
     <div class="wishlist-heading">
@@ -102,34 +128,42 @@
             <h1 style=" font-size: 50px; margin-right:40px; margin-top:25px;">{{ wishlist.title }}</h1>
         </div>
         <button class="btn btn-outline-primary" style="margin-left:200px; margin-top:25px; width:250px; text-align:center"
-                onclick="copyToClipboard()">
+                onclick="copyToClipboard_2()">
             Хочу что-нибудь подарить
         </button>
 
     </div>
-    <div class='wishlists'>
+    <div class='wishlists-not-user'>
         {% for item in wishes%}
         <div class='cards-row'>
-            <div class='card'>
+            <div class='card {% if item.is_taken %}reserved{% endif %}'>
                 <div class='card-body'>
                     <div class="reservation">
                         <h3 class='card-title'>{{ item.name }}</h3>
+                            {% if item.is_taken == False %}
                             <div class="reserve-button">
-                                <input class="form-check-input" type="checkbox" value="" id="{{}}">
+                            <input class="form-check-input wish-checkbox" type="checkbox" value="{{ item.id }}" id="wish_{{ item.id }}">
                             </div>
+                            {% endif %}
                     </div>
                     <div class='card-text'>{{ item.description }}</div>
                     <div class="card-price">{{ item.price|round(0) }} рублей</div>
+                    {% if item.is_taken == False %}
                     <div class='card-button'>
                         <a class='card-link' href="{{ item.link }}">Купить</a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
         {% endfor %}
 
+
     </div>
+    <button class="btn btn-outline-primary" style=' margin-bottom:50px; margin-left:200px; ' onclick="saveReserved()">Забронировать подарки</button>
+
 </section>
+{% endif %}
 {% endif %}
 
 {% endblock %}

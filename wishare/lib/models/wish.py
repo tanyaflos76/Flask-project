@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import DateTime, ForeignKey, Numeric, func
+from sqlalchemy import DateTime, ForeignKey, Numeric, func, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .abc import AbstractModel
@@ -20,6 +20,7 @@ class WishModel(AbstractModel):
     description: Mapped[str | None]
     link: Mapped[str | None]
     price: Mapped[float | None] = mapped_column(Numeric(10, 2))
+    is_taken: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False, server_default="false")
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         server_default=func.now(),
