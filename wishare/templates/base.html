@@ -28,7 +28,7 @@
 
         {% if current_user.is_authenticated %}
         <div class="profile-btns">
-        <a class="text-profile" style="margin-right:20px; margin-top:10px" href="/profile">Профиль</a>
+        <a class="text-profile" style="margin-right:20px; margin-top:10px" href="/profile"> {{ current_user.username }}</a>
         <a class="btn btn-primary" style='font-size:20px; margin-right:20px; margin-bottom:20px; height:60%' href='/logout' role="button">Выйти</a>
         </div>
             {% else %}
