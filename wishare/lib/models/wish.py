@@ -1,14 +1,15 @@
 from datetime import datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import DateTime, ForeignKey, Numeric, func, Boolean
+from sqlalchemy import Boolean, DateTime, ForeignKey, Numeric, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .abc import AbstractModel
-from .reservation import ReservationModel
+
 
 if TYPE_CHECKING:
-    from . import WishListModel
+    from .reservation import ReservationModel
+    from .wish_list import WishListModel
 
 
 class WishModel(AbstractModel):
@@ -18,7 +19,7 @@ class WishModel(AbstractModel):
     wish_list_id: Mapped[int] = mapped_column("wish_list_id", ForeignKey("wish_lists.id"))
     name: Mapped[str | None]
     description: Mapped[str | None]
-    link: Mapped[str | None]
+    image_name: Mapped[str | None]
     price: Mapped[float | None] = mapped_column(Numeric(10, 2))
     is_taken: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False, server_default="false")
     created_at: Mapped[datetime] = mapped_column(
