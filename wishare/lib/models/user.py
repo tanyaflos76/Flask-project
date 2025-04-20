@@ -9,6 +9,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from .abc import AbstractModel
 from .reservation import ReservationModel
 
+
 if TYPE_CHECKING:
     from .wish_list import WishListModel
 

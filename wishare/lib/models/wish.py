@@ -20,6 +20,7 @@ class WishModel(AbstractModel):
     name: Mapped[str | None]
     description: Mapped[str | None]
     image_name: Mapped[str | None]
+    link: Mapped[str | None]
     price: Mapped[float | None] = mapped_column(Numeric(10, 2))
     is_taken: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False, server_default="false")
     created_at: Mapped[datetime] = mapped_column(
