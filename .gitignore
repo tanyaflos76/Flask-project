@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# uploaded images
+uploads/
+
 # Distribution / packaging
 .Python
 build/
@@ -58,6 +61,7 @@ cover/
 *.log
 local_settings.py
 db.sqlite3
+database.db
 db.sqlite3-journal
 
 # Flask stuff:

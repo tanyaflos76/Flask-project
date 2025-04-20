@@ -1,0 +1,91 @@
+/* HEADER */
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.profile-btns{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.header-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.container-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.header-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.logo-img {
+  margin-right: 40px;
+}
+
+.header-menu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.wishlists-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wishlists{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.wishlists-not-user{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.wishlist-section{
+    display:flex;
+    flex-direction:row;
+}
+
+.wishlist-heading{
+    display:flex;
+    flex-direction:column;
+}
+
+.reservation{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+
+.reserve-button{
+    display:flex;
+    flex-direction:column;
+}

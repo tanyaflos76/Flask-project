@@ -32,7 +32,7 @@ FROM base AS source
 
 RUN mkdir -p /app
 WORKDIR /app
-COPY app /app/app
+COPY wishare /app/wishare
 COPY pyproject.toml /app/pyproject.toml
 COPY alembic.ini /app/alembic.ini
 COPY migrations /app/migrations
