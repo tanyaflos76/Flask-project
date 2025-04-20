@@ -11,7 +11,7 @@ from wishare.lib.forms.wish import CreatingWishForm
 from wishare.lib.models import WishModel
 
 
-UPLOADS_DIR = Path(__name__).resolve().parent / "wishare" / "uploads"
+UPLOADS_DIR = Path(__name__).resolve().parent / "uploads"
 
 
 def get_unique_filename(filename: str):

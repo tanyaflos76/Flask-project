@@ -3,7 +3,7 @@ from typing import Self
 
 from dishka import make_container
 from dishka.integrations.flask import FlaskProvider, setup_dishka
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_login import LoginManager
 from sqlalchemy.orm import Session
 
@@ -15,6 +15,7 @@ from wishare.routers.router import router
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = BASE_DIR / "wishare" / "templates"
+UPLOADS_DIR = BASE_DIR / "uploads"
 
 
 class App:
@@ -31,7 +32,12 @@ class App:
 
     def setup_app(self) -> None:
         self.app.register_blueprint(router)
+
+        UPLOADS_DIR.mkdir(exist_ok=True)
+        self.app.route("/uploads/<path:filename>")(self.serve_uploads)
+
         self.app.secret_key = self.config.security.token
+
         self.container = make_container(provider, FlaskProvider())
 
         self.login_manager.user_loader(self.load_user)
@@ -42,6 +48,9 @@ class App:
     def load_user(self, user_id: int):
         with self.container() as request_container:
             return request_container.get(Session).query(UserModel).get(user_id)
+
+    def serve_uploads(self, filename: str):
+        return send_from_directory(UPLOADS_DIR, filename)
 
 
 def app() -> Flask:

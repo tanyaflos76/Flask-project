@@ -152,6 +152,21 @@
         {% for item in wishes%}
         <div class='cards-row'>
             <div class='card {% if item.is_taken %}reserved{% endif %}'>
+
+                {% if item.image_name %}
+                <div class='card-image'>
+                    <img src='/uploads/{{ item.image_name }}'
+                         alt="{{ item.name }}"
+                         class='card-img'>
+                </div>
+                {% else %}
+                <div class='card-image'>
+                    <img src='/static/img/placeholder.jpg'
+                         alt="Placeholder image"
+                         class='card-img'>
+                </div>
+                {% endif %}
+
                 <div class='card-body'>
                     <div class="reservation">
                         <h3 class='card-title'>{{ item.name }}</h3>
