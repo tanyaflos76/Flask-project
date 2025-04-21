@@ -60,4 +60,4 @@ ENV PORT=8080 HOST=0.0.0.0
 COPY --from=requirements /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 COPY --from=source /app /app
 
-CMD ["gunicorn", "app.main:app"]
+CMD ["python", "-m", "gunicorn", "wishare.main:app"]

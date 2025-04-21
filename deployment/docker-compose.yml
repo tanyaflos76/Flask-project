@@ -1,14 +1,19 @@
 services:
   app:
-    image: &app_image ghcr.io/tanyflos76/Flask-project:latest
+    image: &app_image ghcr.io/tanyaflos76/flask-project:latest
+
+    volumes: &app_volumes
+      - ./data:/app/data
+      - ./uploads:/app/uploads
 
     restart: unless-stopped
 
     env_file: &app_env_file
       - .env
 
-    environment: &app_environment
-      MODE: app
+    depends_on:
+      migrations:
+        condition: service_started
 
     healthcheck: &healthcheck
       interval: 5s
@@ -18,4 +23,16 @@ services:
       start_interval: 1s
 
     ports:
-      - 8000:8000
+      - 8080:8080
+
+  migrations:
+    image: *app_image
+
+    volumes: *app_volumes
+
+    env_file: *app_env_file
+
+    command: "python -m alembic upgrade head"
+
+    healthcheck:
+      disable: true
