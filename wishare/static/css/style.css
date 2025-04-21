@@ -30,17 +30,15 @@
   margin-left: 40px;
 }
 
+
 .user-section {
-  height: 300px;
+  height: 200px;
   border: 3px solid black;
   margin-left: 50px;
   margin-right: 50px;
   margin-top: 70px;
   margin-bottom: 70px;
-  padding-left: 100px;
-  padding-right: 500px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-left: 580px;
 }
 
 .wishlists-heading {
@@ -60,6 +58,11 @@
 .logo-title {
   font-size: 70px;
   font-family: Allan;
+  color:black;
+}
+
+.logo-title:hover {
+    color: gray;
 }
 
 .text-profile {
